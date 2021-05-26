@@ -1,0 +1,66 @@
+<?php use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('header') ?>
+<?php $finance = Data::get('finance')?>
+<?php ErrMgr::attach($finance) ?>
+
+
+	<!-- container -->
+	<div class="container">
+
+		<div class="row">
+			
+			<!-- Article main content -->
+			<article class="col-xs-12 maincontent">
+				<header class="page-header">
+					<h1 class="page-title">Novo Financiamento</h1>
+				</header>
+				
+				<div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<hr>
+							<form method="post" action="<?=Url::toRoute('finance/store')?>">
+								<div class="top-margin">
+									<label>Descrição <span class="text-danger">*</span></label>
+									<input type="text" value="<?=$finance->descricao?>" name="descricao" class="form-control" placeholder="Introduza uma descrição">
+                                    <?= ErrMgr::bind('descricao') ?>
+
+								</div>
+								<div class="top-margin">
+									<label>Valor <span class="text-danger">*</span></label>
+									<input type="text" value="<?=$finance->valor?>" name="valor" class="form-control" placeholder="insira o valor">
+                                    <?= ErrMgr::bind('valor') ?>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Tipo de Categoria <span class="text-danger">*</span></label>
+                                    <input type="text" value="<?=$finance->tipocategoria?>" name="tipocategoria" class="form-control" placeholder="insira a categoria">
+                                    <?= ErrMgr::bind('tipocategoria') ?>
+                                </div>
+                                <div class="top-margin">
+                                    <label>Data <span class="text-danger">*</span></label>
+
+                                </div>
+
+								<hr>
+
+									<div class="col-lg-4 text-right">
+										<button class="btn btn-action" type="submit">New</button>
+									</div>
+
+							</form>
+						</div>
+					</div>
+
+				</div>
+				
+			</article>
+			<!-- /Article -->
+
+		</div>
+	</div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>
