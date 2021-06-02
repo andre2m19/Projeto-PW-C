@@ -1,0 +1,84 @@
+<?php use ArmoredCore\WebObjects\Layout;
+
+Layout::includeLayout('header') ?>
+<?php $user = Data::get('user') ?>
+    <!-- container -->
+    <div class="container">
+
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">User access</li>
+        </ol>
+
+        <div class="row">
+
+            <!-- Article main content -->
+            <article class="col-xs-12 maincontent">
+                <header class="page-header">
+                    <h1 class="page-title">Registar</h1>
+                </header>
+
+                <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="thin text-center">Registar</h3>
+                            <hr>
+
+                            <form>
+                                <div class="top-margin">
+                                    <label>Nome<span class="text-danger"><?=$user-> nome?>*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Data de nascimento <span class="text-danger"><?=$user-> data_nascimento?>*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Email <span class="text-danger"><?=$user-> email?>*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+                                <div class="top-margin">
+                                    <label>Telefone <span class="text-danger"><?=$user-> telefone?>*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label>Username <span class="text-danger"><?=$user-> username?>*</span></label>
+                                    <input type="text" class="form-control">
+                                </div>
+
+                                <div class="top-margin">
+                                    <label for="role">Role:<?=$user-> role?></label>
+                                    <select name="role" id="role">
+                                        <option value="administrador"><?=$user-> administrador?>Administrador</option>
+                                        <option value="passageiro"><?=$user-> passageiro?>Passageiro</option>
+                                        <option value="gestorvoo"><?=$user-> gestorvoo?>Gestor de Voo</option>
+                                        <option value="operadorcheckin"><?=$user-> operadorcheckin?>Operador de Checkin</option>
+
+                                    </select>
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-lg-8">
+                                        <b><a href="">Forgot password?</a></b>
+                                    </div>
+                                    <div class="col-lg-4 text-right">
+                                        <button class="btn btn-action" type="submit">Registar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </article>
+            <!-- /Article -->
+
+        </div>
+    </div>	<!-- /container -->
+
+<?php Layout::includeLayout('footer') ?>
