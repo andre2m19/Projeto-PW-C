@@ -1,0 +1,34 @@
+<?php
+
+class LoginController
+{
+    public function getLoginForm(){
+
+}
+    public function getRegistrationForm(){
+        return View::make('Login.Registration');
+
+}
+    public function Registation(){
+      $User = new User(Post::getAll());
+      $User -> role = 'passageiro';
+
+      if($User -> is_valid()){
+          $User -> save();
+          Redirect:: toRoute('Login/getLogin');
+      } else{
+          Redirect:: FlashtoRoute('Login/getRegistration', ['user' => $User]);
+
+
+      }
+    }
+
+    public function doLogin(){
+      $username = Post::get('username');
+      $password = Post::get('password');
+      $user = User::find_by_username_and_password($username, $password);
+    }
+
+
+}
+?>
