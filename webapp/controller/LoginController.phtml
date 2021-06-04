@@ -29,6 +29,18 @@ class LoginController
       $user = User::find_by_username_and_password($username, $password);
     }
 
+     public function  doRegistration(){
+        $User = new user(Post::getAll());
+        $User -> role = 'passageiro';
+
+        if($User -> is_valid()){
+           $User -> save();
+           Redirect::toRoute('login/loginform');
+        } else{
+            Redirect::flashToRoute('login/getRegistration', ['user' => $User]);
+        }
+     }
+
 
 }
 ?>
