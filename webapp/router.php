@@ -28,7 +28,7 @@ Router::get('finance/index', 'FinanceController/index');
 Router::get('finance/show', 'FinanceController/show');
 Router::post('finance/show', 'FinanceController/show');
 Router::get('finance/destroy', 'FinanceController/destroy');
-Router::get('user/login', 'LoginController/');
+Router::post('User/login', 'LoginController');
 
 
 

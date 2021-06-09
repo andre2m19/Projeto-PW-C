@@ -1,0 +1,31 @@
+<?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\Debug;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('administrador');
+$aeroporto = Data::get('aeroporto');
+
+
+?>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1> Nome: <?php echo $aeroporto->nome ?></h1>
+
+        </div>
+        <div class="col-12">
+            <h1> Cidade: <?php echo $aeroporto->cidade ?></h1>
+        </div>
+        <div class="col-12">
+            <h1> País: <?php echo $aeroporto->pais ?></h1>
+        </div>
+        <div class="col-12">
+            <h1> Morada: <?php echo $aeroporto->morada ?></h1>
+        </div>
+        <br>
+        <a href="<?=URL::toRoute('aeroporto/edit', $aeroporto->id)?>" class="btn btn primary">Editar</a>
+    </div>
+</div>
