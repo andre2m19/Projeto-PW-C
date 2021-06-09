@@ -12,7 +12,7 @@ Layout::includeLayout('flightheader')?>
 
 </head>
 
-<body>
+<tbody>
 <div class="">
 
 </div>
@@ -26,16 +26,20 @@ Layout::includeLayout('flightheader')?>
     <td><?= $layover->datachegada?></td>
     <td><?= $layover->distancia?></td>
     <td><?= $layover->preco?></td>
-    <a>
+    <td>
         <a href="<?=url::toRoute('layover/edit', $layover->id)?>" class="btn btn-info" role="button">Editar</a>
         <a href="<?=url::toRoute('layover/show', $layover->id)?>" class="btn btn-info" role="button">Escala</a>
         <a href="<?=url::toRoute('layover/destroy', $layover->id)?>" class="btn btn-info" role="button">Apagar</a>
         </td>
 </tr>
+<?php } ?>
+</tbody>
 
+<div class="col-sm-6">
+    <h3> Inserir nova Escala</h3>
+    <a>
+        <a href="<?=url::toRoute('layover/create', flight )?>)" class="btn btn-info" role="button" Nova</a>
+    </p>
 
-
-
-
-
-</body>
+</div>
+<?php Layout::includeLayout('footer');

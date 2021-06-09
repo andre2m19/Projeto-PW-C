@@ -9,14 +9,12 @@ class AeroportoController extends BaseController
 {
     public function index()
     {
-        // TODO: Implement index() method.
         $aeroporto = Aeroporto::all();
         return View::make('aeroporto.index', ['aeroporto' => $aeroporto]);
     }
 
     public function create()
     {
-        // TODO: Implement create() method.
         return View::make('aeroporto.create');
     }
 
@@ -25,7 +23,7 @@ class AeroportoController extends BaseController
         $aeroporto = Aeroporto::find([]);
 
         if (is_null($aeroporto)) {
-            //TODO redirect to standard error page
+
         } else {
             return View::make('aeroporto.show', ['aeroporto' => $aeroporto]);
         }
@@ -34,7 +32,7 @@ class AeroportoController extends BaseController
         $aeroporto = Aeroporto::find();
 
         if (is_null($aeroporto)) {
-            //TODO redirect to standard error page
+
         } else {
             return View::make('aeroporto.edit', ['aeroporto' => $aeroporto]);
         }

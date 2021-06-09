@@ -1,22 +1,80 @@
 <?php
 use ArmoredCore\Controllers\BaseController;
-use ArmoredCore\Interfaces\ResourceControllerInterface;
 use ArmoredCore\WebObjects\Post;
 use ArmoredCore\WebObjects\Redirect;
 use ArmoredCore\WebObjects\view;
 
-class AeroportoController extends BaseController{
+class LayoverController extends BaseController{
     public function index()
     {
-        // TODO: Implement index() method.
-        $aeroporto = Aeroporto::all();
-        return View::make('aeroporto.index', ['aeroporto' => $aeroporto]);
+
+        $layover = Layover::all();
+        return View::make('layover.index', ['aeroporto' => $layover]);
     }
 
     public function create()
     {
-        // TODO: Implement create() method.
-        return View::make('aeroporto.create');
+        $layover = Layover::all();
+        \ArmoredCore\WebObjects\Debug::barDump($layover);
+        die();
+
+        return View::make('layover.create', $layover);
     }
+
+    public function  store()
+    {
+        $layover = new Layover(Post::getAll());
+
+        if($layover -> is_valid()){
+            $layover-> save();
+            Redirect::toRoute('layover/index');
+        }else{
+            //Redirect to form with data and errors
+            Redirect::flashToRoute('layover/create', ['layover' => $layover]);
+        }
+    }
+    public function show($id)
+    {
+        $layover = Layover::find([$id]);
+
+        if (is_null($layover)) {
+            //TODO redirect to standard error page
+        } else {
+            return View::make('layover.show', ['finance' => $layover]);
+        }
+    }
+
+    public function edit($id)
+    {
+        $layover= Layover::find([$id]);
+
+        if (is_null($layover)) {
+            //TODO redirect to standard error page
+        } else {
+            return View::make('layover.edit', ['layover' => $layover]);
+        }
+    }
+
+    public function update($id)
+    {
+        $layover = Layover::find([$id]);
+        $layover->update_attributes(Post::getAll());
+
+        if($layover->is_valid()){
+            $layover->save();
+            Redirect::toRoute('layover/index');
+        } else {
+            //redirect to form with data and errors
+            Redirect::flashToRoute('layover/edit', ['layover' => $layover]);
+        }
+    }
+
+    public function destroy($id)
+    {
+        $layover = Layover::find([$id]);
+        $layover->delete();
+        Redirect::toRoute('layover/index');
+    }
+
 }
 ?>
