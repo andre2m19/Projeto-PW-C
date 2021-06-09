@@ -1,1 +1,41 @@
 <?php
+use ArmoredCore\WebObjects\Data;
+use ArmoredCore\WebObjects\ErrMgr;
+use ArmoredCore\WebObjects\Layout;
+use ArmoredCore\WebObjects\URL;
+
+Layout::includeLayout('flightheader')?>
+<?php $layovers = Data::get('layovers')?>
+<?php $aeroporto = Data::get('aeroporto')?>
+<?php ErrMgr::attach($layovers)?>
+<head>
+
+</head>
+
+<body>
+<div class="">
+
+</div>
+
+<?php foreach ($layovers as $layover){?>
+<tr>
+    <td><?= $layover->id?></td>
+    <td><?= $layover->idaeroportoorigem?></td>
+    <td><?= $layover->aeroportodestino?></td>
+    <td><?= $layover->datapartida?></td>
+    <td><?= $layover->datachegada?></td>
+    <td><?= $layover->distancia?></td>
+    <td><?= $layover->preco?></td>
+    <a>
+        <a href="<?=url::toRoute('layover/edit', $layover->id)?>" class="btn btn-info" role="button">Editar</a>
+        <a href="<?=url::toRoute('layover/show', $layover->id)?>" class="btn btn-info" role="button">Escala</a>
+        <a href="<?=url::toRoute('layover/destroy', $layover->id)?>" class="btn btn-info" role="button">Apagar</a>
+        </td>
+</tr>
+
+
+
+
+
+
+</body>
